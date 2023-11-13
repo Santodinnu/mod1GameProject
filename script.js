@@ -1,55 +1,51 @@
-// initially create grid to have the memory game
-// have 4 levels of the game
-// include time duration to choose whether game is won or lost
-// make it interactive by inputing name from the player
+//create initial constants
+//one for game container
+const container = document.querySelector(".game-board");
 
+//one for colors
+const colors = ["red", "blue", "green", "yellow", "purple", "orange","aqua","brown"];
+//creating an array to hold the colors array twice using spread operator
+const colorsPicklist = [...colors, ...colors];
 
-//the state of the grid
-let reveled = 0;
-let activeBox = null;
-let endMove = false;
+//initializing tile count using the length of total colors
+let tileCount = colorsPicklist.length;
 
-//select the main grid 
-const containerEl = document.querySelector(".container");
+//starting of the game initial status are stored in variables
+let revealedCount = 0; //
+let activeTile = null;
+let toCloseTile = false;
 
-//create a constant variable which is an array to have 8 colors
-const colors = ["red","orange","yellow","green","purple","blue","pink","teal"];
- 
-//to assign each box with random color
-const colorsPickList = [...colors,...colors];
-//console.log(colorsPickList)
+//the tiles are assigned with random colors from array using for loop
+for(i=0;i<tileCount;i++){
+  const randomIndex = Math.floor(Math.random() * colorsPicklist.length);
+  const color = colorsPicklist[randomIndex]; //giving random color to tile
+  
+  colorsPicklist.splice(randomIndex, 1); //removing the colors assigned using splice method 
 
-const boxCount = colorsPickList.length;
+  //calling the buildTile function
+  const tile = buildTile(color); //color is passed as parameter to the function
+  container.appendChild(tile);
+  
+}
 
-//give colors to each box
-for (let i = 0; i < boxCount; i++) {
-    const randomIndex = Math.floor(Math.random() * colorsPickList.length);
-    const color = colorsPickList[randomIndex];
-    const box = showBox(color);
-    colorsPickList.splice(randomIndex, 1);
+function buildTile(color){
+  const element = document.createElement("div");  
+  element.classList.add("tile");
+  element.setAttribute("color",color);
+  element.setAttribute("color-revealed","false");
 
-  }
-
-const eachBox = document.querySelector(".box");
-
-function showBox(color){
-    eachBox.setAttribute("data-color",color);
-    eachBox.setAttribute("color-revealed","false");
-    eachBox.addEventListener("click",()=>{
-        const revealed = eachBox.getAttribute("color-revealed");
-        if(endMove || revealed==="true" || eachBox == activeBox){
-         return;
-        }
-        //reveal the color
-        eachBox.style.backgroundColor = color;
-
-        if (!activeBox) {
-            activeBox = eachBox;
-            return;
-          }
-
-
-    })
+  return element;
 
 }
+
+
+
+
+
+
+
+
+
+
+
 
