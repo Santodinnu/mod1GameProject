@@ -5,7 +5,7 @@ body{
     text-align: center;
 }
 
-.mainGrid{
+.container{
     margin: auto;
     width: max-content;
     display: grid;
@@ -13,7 +13,7 @@ body{
     gap: 10px;
     box-sizing: border-box;
 }
-.box{
+.tile{
     height: 100px;
     background: black;
     border: 5px solid lightgray;

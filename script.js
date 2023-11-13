@@ -10,7 +10,7 @@ let activeBox = null;
 let endMove = false;
 
 //select the main grid 
-const mainGridEl = document.querySelector(".mainGrid");
+const containerEl = document.querySelector(".container");
 
 //create a constant variable which is an array to have 8 colors
 const colors = ["red","orange","yellow","green","purple","blue","pink","teal"];
@@ -27,7 +27,7 @@ for (let i = 0; i < boxCount; i++) {
     const color = colorsPickList[randomIndex];
     const box = showBox(color);
     colorsPickList.splice(randomIndex, 1);
-    
+
   }
 
 const eachBox = document.querySelector(".box");
@@ -52,3 +52,4 @@ function showBox(color){
     })
 
 }
+
