@@ -28,11 +28,37 @@ for(i=0;i<tileCount;i++){
   
 }
 
+//writing a buildTile function to create div element and add tiles
+
 function buildTile(color){
   const element = document.createElement("div");  
   element.classList.add("tile");
   element.setAttribute("color",color);
   element.setAttribute("color-revealed","false");
+
+  //add an event listener on the event of click
+  element.addEventListener("click", () => {
+    if(toCloseTile){
+        return;
+    }
+    element.style.backgroundColor = color;
+
+    if(!activeTile){
+        activeTile = element;
+        return;
+    }
+    toCloseTile = true;
+
+    //create a function for time delay
+    setTimeout(() => {
+        element.style.backgroundColor = null;
+        activeTile.style.backgroundColor = null;
+        toCloseTile = false;
+        activeTile = null;
+    }, 1000);
+  })
+
+
 
   return element;
 
