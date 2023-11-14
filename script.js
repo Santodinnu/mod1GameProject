@@ -38,7 +38,9 @@ function buildTile(color){
 
   //add an event listener on the event of click
   element.addEventListener("click", () => {
-    if(toCloseTile){
+    const revealed = activeTile.getAttribute("color-revealed");
+
+    if(toCloseTile || revealed === "true" || element === activeTile){
         return;
     }
     element.style.backgroundColor = color;
@@ -52,9 +54,12 @@ function buildTile(color){
     const colorMatch = activeTile.getAttribute("color");
     //check if the two tiles are of same color
     if(colorMatch === color){
-        toCloseTile = false;
+        element.setAttribute("color-revealed","true");
+        activeTile.setAttribute("color-revealed","true");
+        
         activeTile = null;
-        revealedCount += 2; // increment the revealed tiles counter by two as two tiles will be matched 
+        toCloseTile = false;
+        revealedCount += 2; // increment the revealed tiles counter by two as two tiles will be matchedg 
     
     if(revealedCount === tileCount){
         alert("You Win!");
