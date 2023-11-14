@@ -47,6 +47,21 @@ function buildTile(color){
         activeTile = element;
         return;
     }
+
+   //create a constant to hold the color attribute of active tile 
+    const colorMatch = activeTile.getAttribute("color");
+    //check if the two tiles are of same color
+    if(colorMatch === color){
+        toCloseTile = false;
+        activeTile = null;
+        revealedCount += 2; // increment the revealed tiles counter by two as two tiles will be matched 
+    
+    if(revealedCount === tileCount){
+        alert("You Win!");
+    }
+    return;
+}
+
     toCloseTile = true;
 
     //create a function for time delay
