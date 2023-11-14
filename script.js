@@ -38,8 +38,9 @@ function buildTile(color){
 
   //add an event listener on the event of click
   element.addEventListener("click", () => {
-    const revealed = activeTile.getAttribute("color-revealed");
-
+    const revealed = element.getAttribute("color-revealed");
+    
+    //added conditions to if statement to fix the bug
     if(toCloseTile || revealed === "true" || element === activeTile){
         return;
     }

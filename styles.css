@@ -3,8 +3,9 @@ html {
     width: 100%;
   }
   body{
-    background-color: lavenderblush;
+    background-color: #333333;
     justify-content: center;
+    color: whitesmoke;
   }
   input{
     margin-right: 300px;
@@ -25,4 +26,8 @@ html {
     background: #111111;
     border: 5px solid #444444;
     cursor: pointer;
+  }
+  input{
+    margin-right: 20px;
+    margin-left: 600px;
   }
