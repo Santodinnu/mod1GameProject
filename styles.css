@@ -25,6 +25,7 @@ html {
     height: 100px;
     background: #111111;
     border: 5px solid #444444;
+    border-radius: 15px;
     cursor: pointer;
   }
   input{
