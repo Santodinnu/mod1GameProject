@@ -46,11 +46,7 @@ function checkForMatch() {
     revealedCount+=2;
   }
   if(revealedCount === cardArray.length){
-    // let userName = document.querySelector("#userName").value;
-    // alert(userName + "You Win! Refresh to start again");
-    audio.play();
-    const winnerScreen = document.getElementById("winner");
-    winnerScreen.style.display = "block";
+    winner();
   }
 }
 
@@ -86,6 +82,14 @@ function startGame() {
 
 startGame();
 
+//winner function
+function winner(){
+    audio.play();
+    let userName = document.querySelector("#userName").value;
+    alert(userName + "You Win! Refresh to start again");
+    const winnerScreen = document.getElementById("winner");
+    winnerScreen.style.display = "block";
+  }
 
 
 
