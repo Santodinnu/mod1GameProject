@@ -6,7 +6,7 @@ let lockCard = false;
 let firstCard, secondCard;
 let revealedCount = 0;
 const audio = new Audio("winningSound.wav");
-
+const game = new Audio("blocks.ogg");
 
 
 
@@ -78,6 +78,7 @@ function resetBoard() {
 function startGame() {
   shuffle();
   cards.forEach((card) => card.addEventListener("click", flipCard));
+  game.play();
 }
 
 startGame();
