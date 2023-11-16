@@ -79,5 +79,7 @@
   #winner{
     display: none;
     background-image: url("winner.jpg");
-    
+  }
+  label{
+    font-size:20px
   }

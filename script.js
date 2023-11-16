@@ -6,8 +6,6 @@ let lockCard = false;
 let firstCard, secondCard;
 let revealedCount = 0;
 const audio = new Audio("winningSound.wav");
-const game = new Audio("blocks.ogg");
-
 
 
 // Shuffle the cards
@@ -78,7 +76,6 @@ function resetBoard() {
 function startGame() {
   shuffle();
   cards.forEach((card) => card.addEventListener("click", flipCard));
-  game.play();
 }
 
 startGame();
@@ -86,9 +83,9 @@ startGame();
 //winner function
 function winner(){
     audio.play();
-    let userName = document.querySelector("#userName").value;
-    alert(userName + "You Win! Refresh to start again");
-    const winnerScreen = document.getElementById("winner");
+    let userName = document.querySelector("#username").value;
+    alert(userName + " You Win! Refresh to start again");
+    const winnerScreen = document.querySelector("#winner");
     winnerScreen.style.display = "block";
   }
 
