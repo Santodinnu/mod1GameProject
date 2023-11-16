@@ -1,17 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <audio autoplay loop src="soundGame.m4a"></audio>
+    <h1>Minecraft Memory Game</h1><br>
+    <label for="username">Enter your name: </label>
+    <input type="text" id="username">
+    <div class="game">
+      <div class="card" data-image="alex.png">
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="card" data-image="alex.png">
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Project1</title>
-  <link href="styles.css" rel="stylesheet" type="text/css" />
-  <script src="script.js" defer></script>
-</head>
+      <div class="card" data-image="creeper.png">
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="card" data-image="creeper.png">
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
 
-<body>
-  <h1>Memory Game</h1>
-  <div><input>Enter your name</input></div>
-  <div class="game-board" id="board"></div>
-</body>
+      <div class="card" data-image="Enderman.png">
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="card" data-image="Enderman.png">
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+
+      <div class="card" data-image="pig.png">
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="card" data-image="pig.png">
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+
+      <div class="card" data-image="steve.png">
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="card" data-image="steve.png">
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+
+      <div class="card" data-image="tnt.png">
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="card" data-image="tnt.png">
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+    </div>
+    <!-- <div class="header"></div> -->
+    <div id="winner"></div>"
+  </body>
 </html>
