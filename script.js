@@ -1,90 +1,89 @@
-//create initial constants
-//one for game container
-const container = document.querySelector(".game-board");
+// Game Variables
+let cards = document.querySelectorAll(".card");
+let cardArray = [...cards];
+let flippedCard = false;
+let lockCard = false;
+let firstCard, secondCard;
+let revealedCount = 0;
+const audio = new Audio("winningSound.wav");
 
-//one for colors
-const colors = ["red", "blue", "green", "yellow", "purple", "orange","aqua","brown"];
-//creating an array to hold the colors array twice using spread operator
-const colorsPicklist = [...colors, ...colors];
 
-//initializing tile count using the length of total colors
-let tileCount = colorsPicklist.length;
 
-//starting of the game initial status are stored in variables
-let revealedCount = 0; //
-let activeTile = null;
-let toCloseTile = false;
-
-//the tiles are assigned with random colors from array using for loop
-for(i=0;i<tileCount;i++){
-  const randomIndex = Math.floor(Math.random() * colorsPicklist.length);
-  const color = colorsPicklist[randomIndex]; //giving random color to tile
-  
-  colorsPicklist.splice(randomIndex, 1); //removing the colors assigned using splice method 
-
-  //calling the buildTile function
-  const tile = buildTile(color); //color is passed as parameter to the function
-  container.appendChild(tile);
-  
+// Shuffle the cards
+function shuffle() {
+  cardArray.forEach((card) => {
+    let randomIndex = Math.floor(Math.random() * cardArray.length);
+    card.style.order = randomIndex;
+    card.children[1].style.backgroundImage = `url(${card.getAttribute(
+      "data-image"
+    )})`;
+  });
 }
+// Flip a card
+function flipCard() {
+  if (lockCard) return;
+  if (this === firstCard) return;
 
-//writing a buildTile function to create div element and add tiles
+  this.classList.add("flip");
 
-function buildTile(color){
-  const element = document.createElement("div");  
-  element.classList.add("tile");
-  element.setAttribute("color",color);
-  element.setAttribute("color-revealed","false");
-
-  //add an event listener on the event of click
-  element.addEventListener("click", () => {
-    const revealed = element.getAttribute("color-revealed");
-    
-    //added conditions to if statement to fix the bug
-    if(toCloseTile || revealed === "true" || element === activeTile){
-        return;
-    }
-    element.style.backgroundColor = color;
-
-    if(!activeTile){
-        activeTile = element;
-        return;
-    }
-
-   //create a constant to hold the color attribute of active tile 
-    const colorMatch = activeTile.getAttribute("color");
-    //check if the two tiles are of same color
-    if(colorMatch === color){
-        element.setAttribute("color-revealed","true");
-        activeTile.setAttribute("color-revealed","true");
-        
-        activeTile = null;
-        toCloseTile = false;
-        revealedCount += 2; // increment the revealed tiles counter by two as two tiles will be matchedg 
-    
-    if(revealedCount === tileCount){
-        alert("You Win!");
-    }
+  if (!flippedCard) {
+    // first card flipped
+    flippedCard = true;
+    firstCard = this;
     return;
+  }
+
+  secondCard = this;
+  checkForMatch();
 }
 
-    toCloseTile = true;
-
-    //create a function for time delay
-    setTimeout(() => {
-        element.style.backgroundColor = null;
-        activeTile.style.backgroundColor = null;
-        toCloseTile = false;
-        activeTile = null;
-    }, 1000);
-  })
-
-
-
-  return element;
-
+// Check for a match
+function checkForMatch() {
+  let isMatch = firstCard.dataset.image === secondCard.dataset.image;
+  isMatch ? disableCards() : unflipCards();
+  if(isMatch){
+    revealedCount+=2;
+  }
+  if(revealedCount === cardArray.length){
+    // let userName = document.querySelector("#userName").value;
+    // alert(userName + "You Win! Refresh to start again");
+    audio.play();
+    const winnerScreen = document.getElementById("winner");
+    winnerScreen.style.display = "block";
+  }
 }
 
+// Disable matched cards
+function disableCards() {
+  firstCard.removeEventListener("click", flipCard);
+  secondCard.removeEventListener("click", flipCard);
+  resetBoard();
+}
+
+// Unflip non-matched cards
+function unflipCards() {
+  lockCard = true;
+
+  setTimeout(() => {
+    firstCard.classList.remove("flip");
+    secondCard.classList.remove("flip");
+    resetBoard();
+  }, 1500);
+}
+
+// Reset the game board
+function resetBoard() {
+  [flippedCard, lockCard] = [false, false];
+  [firstCard, secondCard] = [null, null];
+}
+
+// Start the game
+function startGame() {
+  shuffle();
+  cards.forEach((card) => card.addEventListener("click", flipCard));
+}
+
+startGame();
 
 
 
