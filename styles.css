@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+    font-family: Minecraft;
   }
   
   body {
@@ -58,13 +58,7 @@
   .card.flip {
     transform: rotateY(180deg);
   }
-  /* .header{
-    width: 1200px;
-    height: 300px;
-    position: relative;
-    background-image: url("Minecraft-Header.webp");
-    
-  } */
+  
   h1{
     color: #0a0a0a;
     font-family: Minecraft;
@@ -80,6 +74,7 @@
     display: none;
     background-image: url("winner.jpg");
   }
+
   label{
     font-size:20px
   }
