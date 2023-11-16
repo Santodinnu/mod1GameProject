@@ -82,11 +82,12 @@ startGame();
 
 //winner function
 function winner(){
+    // const winnerScreen = document.querySelector(".winner");
+    // winnerScreen.style.display = "block";
     audio.play();
     let userName = document.querySelector("#username").value;
     alert(userName + " You Win! Refresh to start again");
-    const winnerScreen = document.querySelector("#winner");
-    winnerScreen.style.display = "block";
+    
   }
 
 
