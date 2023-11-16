@@ -26,7 +26,7 @@ This is a simple memory card game implemented using HTML, CSS, and JavaScript. T
 - The styling is defined in the CSS file (`style.css`).
 - Images for the cards are specified in the HTML file, and they are loaded dynamically during shuffling.
 
-## How to Run the Game
+## License
 
-Simply open the `index.html` file in a web browser to start playing the game.
+None.
 
