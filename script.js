@@ -9,6 +9,7 @@ const audio = new Audio("winningSound.wav");
 
 
 
+
 // Shuffle the cards
 function shuffle() {
   cardArray.forEach((card) => {
