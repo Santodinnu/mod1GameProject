@@ -14,7 +14,7 @@ This is a simple memory card game implemented using HTML, CSS, and JavaScript. T
 
 ## How to Play
 
-1. Open the `index.html` file in your web browser.
+1. Open the `https://santodinnu.github.io/mod1GameProject/`  in your web browser.
 2. Click on a card to flip it.
 3. Try to find matching pairs by remembering the positions of the cards.
 4. Continue until all pairs are matched.
