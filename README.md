@@ -1,6 +1,8 @@
 # mod1GameProject
 # Memory Card Game
 
+https://santodinnu.github.io/mod1GameProject/
+
 ## Description
 
 This is a simple memory card game implemented using HTML, CSS, and JavaScript. The game features a set of cards with different images, and the player's goal is to find matching pairs by flipping the cards.
